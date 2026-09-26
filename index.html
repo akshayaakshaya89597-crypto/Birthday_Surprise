@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Birthday Surprise ❤️</title>
+
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffd6e7, #fff0f6);
+            overflow: hidden;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 420px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 30px 20px;
+            box-sizing: border-box;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 10;
+            scrollbar-width: none;
+        }
+
+        .container::-webkit-scrollbar {
+            display: none;
+        }
+
+        h1 {
+            color: #d6336c;
+        }
+
+        p {
+            font-size: 20px;
+            color: #7a4054;
+        }
+
+        button {
+            padding: 14px 30px;
+            border: 0;
+            border-radius: 25px;
+            background: #d6336c;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* BALLOONS */
+
+        .balloons {
+            font-size: 35px;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* CAKE */
+
+        .cake {
+            font-size: 70px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* ENVELOPE */
+
+        .envelope {
+            font-size: 60px;
+            cursor: pointer;
+            margin: 25px 0;
+            animation: pulse 1.5s infinite;
+        }
+
+        .envelope p {
+            font-size: 18px;
+            color: #d6336c;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        /* LETTER */
+
+        .heart-title {
+            color: #7a4054;
+            font-family: Georgia, serif;
+            font-style: italic;
+            margin-bottom: 25px;
+            font-size: 25px;
+        }
+
+        .letter {
+            background: white;
+            border: 2px solid #f0dce4;
+            border-radius: 12px;
+            padding: 22px;
+            text-align: left;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .letter-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #5f4650;
+            font-family: Georgia, serif;
+            font-size: 16px;
+        }
+
+        .heart-button {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #d6336c;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: heartbeat 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .message {
+            font-family: Georgia, serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #5f4650;
+            margin-top: 25px;
+            white-space: pre-line;
+            min-height: 300px;
+        }
+
+        .love {
+            text-align: center;
+            font-size: 25px;
+            color: #d6336c;
+            font-family: Georgia, serif;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .letter-bottom {
+            text-align: right;
+            font-size: 22px;
+            margin-top: 15px;
+        }
+
+        /* LAST BUTTON */
+
+        .last-button {
+            margin-top: 25px;
+            background: #d6336c;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 25px;
+            font-size: 17px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(214,51,108,0.25);
+        }
+
+        /* FALLING HEARTS */
+
+        .heart {
+            position: fixed;
+            top: -40px;
+            font-size: 22px;
+            z-index: 1;
+            pointer-events: none;
+            animation: fall 7s linear infinite;
+        }
+
+        .heart:nth-child(1) {
+            left: 5%;
+        }
+
+        .heart:nth-child(2) {
+            left: 15%;
+            animation-delay: 1.5s;
+        }
+
+        .heart:nth-child(3) {
+            left: 27%;
+            animation-delay: 3s;
+        }
+
+        .heart:nth-child(4) {
+            left: 40%;
+            animation-delay: 0.8s;
+        }
+
+        .heart:nth-child(5) {
+            left: 52%;
+            animation-delay: 2.2s;
+        }
+
+        .heart:nth-child(6) {
+            left: 64%;
+            animation-delay: 4s;
+        }
+
+        .heart:nth-child(7) {
+            left: 75%;
+            animation-delay: 1.2s;
+        }
+
+        .heart:nth-child(8) {
+            left: 86%;
+            animation-delay: 2.8s;
+        }
+
+        .heart:nth-child(9) {
+            left: 94%;
+            animation-delay: 4.5s;
+        }
+
+        .heart:nth-child(10) {
+            left: 35%;
+            animation-delay: 5s;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -40px;
+                opacity: 0;
+                transform: scale(0.7);
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.9;
+            }
+
+            100% {
+                top: 110vh;
+                opacity: 0;
+                transform: scale(1.3);
+            }
+        }
+
+        /* FINAL ANIMATION */
+
+        .final-surprise {
+            animation: finalAppear 1.2s ease;
+            padding: 10px;
+        }
+
+        .confetti {
+            font-size: 35px;
+            animation: sparkle 1s infinite alternate;
+        }
+
+        .final-balloons {
+            font-size: 40px;
+            animation: balloonFloat 2s ease-in-out infinite;
+        }
+
+        .gift {
+            font-size: 75px;
+            margin: 15px 0;
+            animation: giftBounce 1.2s ease-in-out infinite;
+        }
+
+        .final-title {
+            font-family: Georgia, serif;
+            font-size: 32px;
+            color: #d6336c;
+            animation: titleGlow 1s ease-in-out infinite alternate;
+        }
+
+        .my-love {
+            color: #d6336c;
+            font-family: Georgia, serif;
+            font-size: 25px;
+            animation: lovePop 1s ease-in-out infinite alternate;
+        }
+
+        .final-cake {
+            font-size: 70px;
+            margin: 10px 0;
+            animation: cakeMove 1.2s ease-in-out infinite;
+        }
+
+        .final-text {
+            font-family: Georgia, serif;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .sparkles {
+            font-size: 38px;
+            animation: sparkle 1.2s infinite alternate;
+        }
+
+        @keyframes finalAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes balloonFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-18px);
+            }
+        }
+
+        @keyframes giftBounce {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        @keyframes titleGlow {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.08);
+            }
+        }
+
+        @keyframes lovePop {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes cakeMove {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.15) rotate(-4deg);
+            }
+        }
+
+        @keyframes sparkle {
+            from {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+
+            to {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Falling Hearts -->
+
+    <div class="heart">❤️</div>
+    <div class="heart">💕</div>
+    <div class="heart">💗</div>
+    <div class="heart">💖</div>
+    <div class="heart">💘</div>
+    <div class="heart">❤️</div>
+    <div class="heart">💕</div>
+    <div class="heart">💗</div>
+    <div class="heart">💖</div>
+    <div class="heart">💘</div>
+
+
+    <!-- MAIN PAGE -->
+
+    <div class="container">
+
+        <h1>🎀 Birthday Surprise 🎀</h1>
+
+        <p>Hiii my love... ❤️</p>
+
+        <p>I made something special for you 🥹💗</p>
+
+        <p>Are you ready? 👀</p>
+
+        <button onclick="showSurprise()">
+            Click Here 💌
+        </button>
+
+    </div>
+
+
+    <script>
+
+        /* FIRST SURPRISE */
+
+        function showSurprise() {
+
+            document.querySelector(".container").innerHTML = `
+
+                <div class="balloons">
+                    🎈 🎈 🎈
+                </div>
+
+                <h1>
+                    🎂 Happy Birthday My Love! 🎂
+                </h1>
+
+                <div class="cake">
+                    🎂
+                </div>
+
+                <p>
+                    ❤️ Today is all about you! ❤️
+                </p>
+
+                <div class="envelope" onclick="openMessage()">
+
+                    💌
+
+                    <p>
+                        Open Me💕
+                    </p>
+
+                </div>
+
+                <div class="balloons">
+                    🎈 💕 🎈
+                </div>
+
+            `;
+        }
+
+
+        /* OPEN MESSAGE */
+
+        function openMessage() {
+
+            document.querySelector(".container").innerHTML = `
+
+                <h2 class="heart-title">
+                    A Message From My Heart 💗
+                </h2>
+
+                <div class="letter">
+
+                    <div class="letter-top">
+
+                        <span>
+                            Dear My Love ❤️
+                        </span>
+
+                        <span class="heart-button">
+                            ♥
+                        </span>
+
+                    </div>
+
+                    <p class="message">
+                        <span id="typingText"></span>
+                    </p>
+
+                    <div class="love">
+                        I Love You So Much ❤️
+                    </div>
+
+                    <button
+                        class="last-button"
+                        onclick="lastSurprise()"
+                    >
+                        One Last Surprise 💝
+                    </button>
+
+                    <div class="letter-bottom">
+                        🎂 💕 🎀
+                    </div>
+
+                </div>
+
+            `;
+
+            startTyping();
+        }
+
+
+        /* TYPING EFFECT */
+
+        function startTyping() {
+
+            const message = `Happiest Birthdayyy my love! 🎂❤️
+
+Innaiku un birthday mattum illa, enakku romba special-aana day too... because nee en life-la irukkuradhu romba precious. 🥹❤️
+
+Un kooda pesura every moment-um, un kooda spend panra every memory-um enakku romba precious. 🫶🏻💕
+
+Un smile eppovume ipdiye irukkanum. Un dreams ellam one by one fulfill aaganum. Nee happy-aa irukkanum, peaceful-aa irukkanum... adhu dhaan enakku romba mukkiyam. ❤️
+
+Life-la evlo ups and downs vandhaalum, naan un kooda iruppen. Unakku support-aa, un happiness-la happy-aa, un sadness-la un kooda iruppen. 🫂❤️
+
+Nee en life-la vandhadhukku apram, neraya beautiful memories enakku kidaichirukku. Un kooda irukkura small small moments kooda enakku romba special. 🥹💗
+
+Unna paakumbodhu, un kooda pesumbodhu, sometimes reason illaama kooda smile varudhu. That's how special you are to me. 😘❤️
+
+Un life full-aa happiness, peace, success and love niraya irukkanum. Nee aasapadra ellame kandippa nadakkanum. ✨
+
+Indha birthday unakku oru beautiful new beginning-aa irukkanum. Un future romba beautiful-aa irukkanum. 🎀💫
+
+And one thing... life-la enna nadandhaalum, namma share panra memories and moments enakku always special-aa dhaan irukkum. ❤️
+
+Once again, Happiest Birthdayyy my love! 🎂🎈❤️
+
+Stay happy, keep smiling and always be the same beautiful person you are. 🥹💕
+
+I love you so muchhh! ❤️🫶🏻
+
+With lots and lots of love... 💌❤️`;
+
+            let i = 0;
+
+            const typingText =
+                document.getElementById("typingText");
+
+            function typeLetter() {
+
+                if (i < message.length) {
+
+                    typingText.textContent +=
+                        message.charAt(i);
+
+                    i++;
+
+                    setTimeout(typeLetter, 35);
+                }
+            }
+
+            typeLetter();
+        }
+
+
+        /* FINAL SURPRISE */
+
+        function lastSurprise() {
+
+            document.querySelector(".container").innerHTML = `
+
+                <div class="final-surprise">
+
+                    <div class="confetti">
+                        ✨ 🎉 ✨
+                    </div>
+
+                    <div class="final-balloons">
+                        🎈 💕 🎈 💕 🎈
+                    </div>
+
+                    <div class="gift">
+                        🎁
+                    </div>
+
+                    <h1 class="final-title">
+                        HAPPY BIRTHDAY
+                    </h1>
+
+                    <h2 class="my-love">
+                        MY LOVE ❤️
+                    </h2>
+
+                    <div class="final-cake">
+                        🎂
+                    </div>
+
+                    <p class="final-text">
+                        May your day be filled with
+                        love, happiness & beautiful memories ✨
+                    </p>
+
+                    <div class="sparkles">
+                        ✨ 🎉 ✨ 🎊 ✨
+                    </div>
+
+                </div>
+
+            `;
+        }
+
+    </script>
+
+</body>
+</html>
